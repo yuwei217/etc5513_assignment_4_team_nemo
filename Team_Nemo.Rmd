@@ -1,8 +1,10 @@
 ---
 title: "Team_Nemo"
-author: "Sitha Jawahar", "Prachi Jaiswal", "Yuwei Jiang"
-date: "20/05/2021"
-output: html_document
+author: "Prachi Jaiswal", "Sithalakshmi Jawahar", "Yuwei Jiang" 
+date: "`r format(Sys.Date(), '%d %B, %Y')`"
+output:
+    bookdown::html_document2
+keep_md: true
 ---
 
 ```{r setup, include=FALSE}
