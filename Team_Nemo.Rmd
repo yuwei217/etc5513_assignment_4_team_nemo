@@ -1,6 +1,7 @@
 ---
-title: "Team_Nemo"
-author: "Prachi Jaiswal", "Sithalakshmi Jawahar", "Yuwei Jiang" 
+title: "Understanding Trading Patterns"
+subtitle: "For Top 3 Trading Economies"
+author: 'Prachi Jaiswal, Sithalakshmi Jawahar, Yuwei Jiang'
 date: "`r format(Sys.Date(), '%d %B, %Y')`"
 output:
     bookdown::html_document2
@@ -11,12 +12,12 @@ keep_md: true
 knitr::opts_chunk$set(warning = FALSE, message = FALSE, cache = TRUE)
 ```
 
-```{r}
+```{r , echo = FALSE}
 library(readr)
 library(tidyverse)
 ```
 
-```{r}
+```{r, echo = FALSE}
 
 clean <- function(x, y) {
   read.csv(x) %>% 
@@ -40,9 +41,25 @@ wheat <- clean("data/UNdata_Export_20210519_132931178.csv","wheat")
 
 ```
 
-```{r}
+```{r, echo = FALSE}
 team_nemo<- rbind(iron_steel, fruits_nuts, rubber, cars, coffee, cotton, pharma, sugar, tobacco, wheat)
 final <- write_csv(team_nemo, "data/team_nemo.csv")
 
 ```
+
+
+\section*{Introduction}
+
+
+\section*{Germany}
+
+
+\section*{China}
+
+
+\section*{USA}
+
+
+\section*{Conclusion}
+
 
