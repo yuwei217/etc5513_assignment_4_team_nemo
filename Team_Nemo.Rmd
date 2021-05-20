@@ -8,7 +8,7 @@ keep_md: true
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, cache = TRUE)
 ```
 
 ```{r}
@@ -37,6 +37,12 @@ pharma <- clean("data/UNdata_Export_20210519_132341600.csv","pharma")
 sugar <- clean("data/UNdata_Export_20210519_132821334.csv","sugar")
 tobacco <- clean("data/UNdata_Export_20210519_131835858.csv","tobacco")
 wheat <- clean("data/UNdata_Export_20210519_132931178.csv","wheat")
+
+```
+
+```{r}
+team_nemo<- rbind(iron_steel, fruits_nuts, rubber, cars, coffee, cotton, pharma, sugar, tobacco, wheat)
+final <- write_csv(team_nemo, "data/team_nemo.csv")
 
 ```
 
