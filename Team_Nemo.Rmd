@@ -15,6 +15,13 @@ knitr::opts_chunk$set(warning = FALSE, message = FALSE, cache = TRUE)
 ```{r , echo = FALSE}
 library(readr)
 library(tidyverse)
+library(ggplot2)
+library(ggthemes)
+library(plotly)
+library(kableExtra)
+library(ggpubr)
+library(gridExtra)
+library(grid)
 ```
 
 ```{r, echo = FALSE}
@@ -52,6 +59,39 @@ final <- write_csv(team_nemo, "data/team_nemo.csv")
 
 
 \section*{Germany}
+```{r pread, echo=FALSE}
+germany_import <- final %>% filter(Country == "Germany", Flow == "Import")
+germany_export <- final %>% filter(Country == "Germany", Flow == "Export")
+```
+
+```{r pgraph, echo=FALSE, fig.cap = "Trade value of Goods in Germany", out.width = "150%"}
+
+graph <- function(a, b)
+  {  
+    a %>%
+    ggplot(aes(Category, Trade, fill = Category))+
+    geom_col()+
+    scale_y_continuous(labels=scales::dollar_format())+
+    
+    facet_grid(~Year)+
+    theme_dark()+
+    scale_fill_brewer(palette = "Set3")+
+    
+    ylab("Trade in USD")+
+    xlab(b)+
+    theme(axis.text.x=element_blank(),
+          axis.ticks.x=element_blank())
+  }
+
+
+gi<- graph(germany_import, "Import Goods")
+ge<- graph(germany_export, "Export Goods") 
+
+ggarrange(gi, ge, 
+          common.legend = TRUE, legend = "top",
+          ncol =1, nrow = 2)
+```
+
 
 
 \section*{China}
